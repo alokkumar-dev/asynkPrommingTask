@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup page</title>
+    <style>
+        nav{
+        width: 100%;
+        height: 60px;
+        display: flex;
+        border: 2px solid rgb(80, 80, 80);
+        justify-content: space-around;
+        font-family: Arial, Helvetica, sans-serif;
+        margin:30px auto;
+        text-align: left;
+        
+    }
+    nav>.logoName{
+        width: 70%;
+        font-size: 24px;
+        padding-top: 16px;
+        font-weight: bold;
+    }
+    a{
+        text-decoration: none;
+        font-size: 20px;
+        padding-top: 16px;
+        color: black;
+        font-weight: bold;
+        
+    }
+
+    /* form style start here... */
+    form{
+        padding: 20px 40px 50px 40px;
+        width: 300px;
+        /* border: 1px solid black; */
+        border-radius: 10px;
+        margin: auto;
+        font-size: 20px;
+        font-weight: bold;
+        background-color: rgb(201, 245, 247);
+    }
+    form>h2{
+        text-align: center;
+        min-width: 0;
+        font-size: 30px;
+        font-family: Arial, Helvetica, sans-serif;
+        /* font-weight: bold; */
+    }
+    input {
+            width: 290px;
+            height: 30px;
+            font-size: 16px;
+
+        }
+
+        label {
+            line-height: 40px;
+
+        }
+
+        #submit {
+            text-shadow: 1px 1px 1px rgb(139, 102, 0);
+            margin-top: 10px;
+            font-size: 20px;
+            background-color: #f1bf40;
+            border: 1px solid rgb(80, 79, 43);
+            width: 300px;
+            height: 35px;
+            border-radius: 2px;
+        }
+
+        /* button {
+            text-shadow: 1px 1px 1px rgb(139, 102, 0);
+            font-size: 20px;
+            background-color: #f1bf40;
+            border: 1px solid rgb(80, 79, 43);
+            border-radius: 2px;
+            padding: 5px 30px;
+        } */
+    /* form style end here... */
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logoName">JDVANCE JAVASCRIPT</div>
+        <a href="./Home.html" id="Home">Home</a>
+        <a href="./Signup.html" id="Signup">Signup</a>
+        <a href="./Login.html" id="Login">Login</a>
+    </nav>
+    <form onsubmit="setDetails(event)">
+        <h2>SignUp</h2>
+        <label for="name">Name</label><br>
+        <input type="text" id="name" required><br>
+        
+        <label for="email">Email</label><br>
+        <input type="email" id="email" required><br>
+
+        <label for="contactNo">ContactNo</label><br>
+        <input type="mobile" id="contactNo" required><br>
+        
+        <label for="password">Password</label><br>
+        <input type="password" id="password" required><br>
+
+        <input type="submit" value="Submit" id="submit">
+
+
+    </form>
+</body>
+</html>
+<script>
+    var getData =JSON.parse(localStorage.getItem("condidateData")) || [];
+function setDetails(event){
+    event.preventDefault();
+
+    let setData = {
+        name : document.getElementById("name").value,
+        email : document.getElementById("email").value,
+        phone : document.getElementById("contactNo").value,
+        password : document.getElementById("password").value
+
+    }
+    getData.push(setData);
+    localStorage.setItem("condidateData", JSON.stringify(getData));
+    alert("Create Account successfully");
+}
+</script>
